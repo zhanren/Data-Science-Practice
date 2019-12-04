@@ -1,16 +1,19 @@
 <h1>Restaurant Recommendation system using Yelp Data<h1>
 
+![Food](https://github.com/zhanren/Food-app/blob/master/Restaurant%20recommandation/food.jpg)
+
 <h2>Table of Content<h2>
-<h3> -Introduction <h3>
-     <sp> <h4>-Study Overview <h4>
-     -Data Source
-     -Methodology Introduction
+
+1.Introduction
+...*Study Overview*
+     *Data Source
+     *Methodology Introduction
      
-<h3> -K Nearest Neighbor (KNN) Strategy <h3>
+K Nearest Neighbor (KNN) Strategy
 
-<h3> -Explicit Alternating Least Square (ALS) Using PySpark <h3>
+Explicit Alternating Least Square (ALS) Using PySpark
 
-<h3> -Inplicit Alternating Least Square <h3>
+Inplicit Alternating Least Square
 
-<h3> -Conclusion,Reflection and Future Improvements <h3>
+Conclusion,Reflection and Future Improvements
      
