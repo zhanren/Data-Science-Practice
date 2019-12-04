@@ -4,11 +4,11 @@
 
 <h2>Table of Content<h2>
 
-1.Introduction
+<h4>1.Introduction <h4>
 
-..* Study Overview
-     *Data Source
-     *Methodology Introduction
+  <h5>..* Study Overview<h5>
+  <h5> Data Source<h5>
+  <h5> Methodology Introduction<h5>
      
 K Nearest Neighbor (KNN) Strategy
 
