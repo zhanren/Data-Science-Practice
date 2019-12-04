@@ -10,11 +10,11 @@
   <h5> Data Source<h5>
   <h5> Methodology Introduction<h5>
      
-<h4>K Nearest Neighbor (KNN) Strategy<h4>
+<h4>2. K Nearest Neighbor (KNN) Strategy<h4>
 
-<h4>Explicit Alternating Least Square (ALS) Using PySpark<h4>
+<h4>3. Explicit Alternating Least Square (ALS) Using PySpark<h4>
 
-<h4>Implicit Alternating Least Square<h4>
+<h4>4. Implicit Alternating Least Square<h4>
 
-<h4>Conclusion,Reflection and Future Improvements<h4>
+<h4>5. Conclusion,Reflection and Future Improvements<h4>
      
