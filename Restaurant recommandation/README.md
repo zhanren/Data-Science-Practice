@@ -12,7 +12,7 @@
      
 ### 2. K Nearest Neighbor (KNN) Strategy
   
-  * [Exploration and Explaination](KNN model.ipynb)
+  * [Exploration and Explaination](https://github.com/zhanren/Data-Science-Practice/blob/master/Restaurant%20recommandation/KNN%20model.ipynb)
   * Python source code
 
 ### 3. Explicit Alternating Least Square (ALS) Using PySpark
