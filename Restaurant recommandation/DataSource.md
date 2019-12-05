@@ -1,9 +1,7 @@
-# Data Source
--------------------------
 ## Last Section
 [Study Overview](Overview.md)
 -------------------------
-##Data Source
+# Data Source
 
 Thanks to Yelp for providing the data. Data source can be found in [here](https://www.kaggle.com/yelp-dataset/yelp-dataset)
 
