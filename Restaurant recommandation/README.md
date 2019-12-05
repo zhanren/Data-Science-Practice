@@ -12,7 +12,7 @@
      
 ### 2. K Nearest Neighbor (KNN) Strategy
   
-  * Exploration and Explaination
+  * [Exploration and Explaination](KNN model.ipynb)
   * Python source code
 
 ### 3. Explicit Alternating Least Square (ALS) Using PySpark
