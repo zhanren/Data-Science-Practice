@@ -11,10 +11,18 @@
   * Methodology Introduction
      
 ### 2. K Nearest Neighbor (KNN) Strategy
+  
+  * Exploration and Explaination
+  * Python source code
 
 ### 3. Explicit Alternating Least Square (ALS) Using PySpark
 
+  * Explicit ALS
+  * Python source code
+
 ### 4. Implicit Alternating Least Square
+  * Implicit ALS
+  * Python source code
 
 ### 5. Conclusion,Reflection and Future Improvements
      
