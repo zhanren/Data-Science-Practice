@@ -1,4 +1,4 @@
-## Last Section
+### Last Section
 [Study Overview](Overview.md)
 -------------------------
 # Data Source
