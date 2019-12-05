@@ -1,6 +1,6 @@
 # Data Source
 -------------------------
-##Last Section
+## Last Section
 [Study Overview](Overview.md)
 -------------------------
 ##Data Source
@@ -15,5 +15,5 @@ For this study, I will mainly use the three files in this data source:
 Please follow Yelp's code of conduct in terms of using these data.
 
 --------------------------
-##Next Section
+## Next Section
 [Methology Introduction](Method.md)
