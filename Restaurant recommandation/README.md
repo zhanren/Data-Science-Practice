@@ -7,8 +7,8 @@
 ### 1. Introduction
 
   * [Study Overview](Overview.md)
-  * Data Source
-  * Methodology Introduction
+  * [Data Source](DataSource.md)
+  * [Methodology Introduction]()
      
 ### 2. K Nearest Neighbor (KNN) Strategy
   
