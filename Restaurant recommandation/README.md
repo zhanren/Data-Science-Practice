@@ -24,5 +24,7 @@
   * Implicit ALS
   * Python source code
 
-### 5. Conclusion,Reflection and Future Improvements
-     
+### 5. Final Comments
+  * [Conclusion,Reflection and Future Improvements](Conclusion.md)
+  
+### 6. Reference
