@@ -1,4 +1,4 @@
-# Restaurant Recommendation system using Yelp Data<h1>
+# Restaurant Recommendation System Using Collaborative Filtering<h1>
 ------------------------------
 ![Food](https://github.com/zhanren/Food-app/blob/master/Restaurant%20recommandation/food.jpg)
 ------------------------------
