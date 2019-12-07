@@ -7,5 +7,6 @@ This is a repository for my practice problems with related to Data Science.
 
 Table of Content
 
-1. [Restaurant Recommendation System using ML](https://github.com/zhanren/Data-Science-Practice/tree/master)
+1. [Restaurant Recommendation System using ML](https://github.com/zhanren/Data-Science-Practice/tree/master/Restaurant%20recommandation)
+2. Unsupervised learning in clustering cell phones (upcoming...)
 
