@@ -17,8 +17,8 @@
 
 ### 3. Explicit Alternating Least Square (ALS) Using PySpark
 
-  * Explicit ALS
-  * Python source code
+  * [Explicit ALS](ALS_pyspark.ipynb)
+  * [Python source code](pyspark.py)
 
 ### 4. Implicit Alternating Least Square
   * Implicit ALS
