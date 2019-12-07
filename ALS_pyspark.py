@@ -1,19 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Dec  2 19:22:02 2019
-
-@author: qwerdf
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Dec  2 19:04:00 2019
-
-@author: qwerdf
-"""
-
-# -*- coding: utf-8 -*-
-"""
 Created on Fri Nov 29 15:26:03 2019
 
 @author: qwerdf
@@ -100,6 +86,10 @@ best_rank,best_regularization,best_model,run_time=ALS_parameter_tuning(train_dat
 #best_rank=20,best_regularization=0.5
 
 def find_restaurant_id(data,restaurant_list):
+    """
+    
+    
+    """
     final_list=[]
     if restaurant_list is None:
         return final_list
@@ -117,27 +107,63 @@ def find_restaurant_id(data,restaurant_list):
 
 #test find_restaurant_id(ALS_data,['Emerald Chinese Restaurant'])
 
-def add_new_user_data(train_data,my_fav,sc=sc,my_least_fav=None):
+def add_new_user_data(train_data,my_fav,my_least_fav=None):
+    """
+    function to add new user's data into train model
     
-    new_user_id=ALS_data.rdd.map(lambda r:r[1]).max()+1
+    
+    --------------
+    
+    
+    parameters:
+    
+    train_data: spark dataframe, Initial data for user_id,business_id,rating combinations
+    
+    my_fav: list of strings, favourite restaurant list; Assume these restaurants are marked as 5
+    
+    my_least_fav: list of strings, least favourite restaurant list; Assume these restaurants are makred as 1
+    """
+    new_user_id=train_data.rdd.map(lambda r:r[1]).max()+1
+    columns=['business_id_int','user_id_int','stars_review','name']
     print("initialize data for new userid {}".format(new_user_id))
     fav_list=find_restaurant_id(train_data,my_fav)
-    fav_rows=[{restaurant_id,new_user_id,5,restaurant} for restaurant_id,restaurant in zip(fav_list,my_fav)]
-    fav_rdd=sc.parallelize(fav_rows)
-    final_set=train_data.rdd.union(fav_rdd)
+    fav_rows=[(restaurant_id,new_user_id,5,restaurant) for restaurant_id,restaurant in zip(fav_list,my_fav)]
+    fav_df=spark.createDataFrame(fav_rows,columns)
+    final_set=train_data.union(fav_df)
     if my_least_fav is not None:
         least_fav_list=find_restaurant_id(train_data,my_least_fav)
-        least_fav_rows=[{restaurant_id,new_user_id,1,restaurant} for restaurant_id,restaurant in zip(least_fav_list,my_least_fav)]
-        least_fav_rdd=sc.parallelize(least_fav_rows)
-        final_set=final_set.union(least_fav_rdd)
-    return final_set
+        least_fav_rows=[(restaurant_id,new_user_id,1,restaurant) for restaurant_id,restaurant in zip(least_fav_list,my_least_fav)]
+        least_fav_df=spark.createDataFrame(least_fav_rows,columns)
+        final_set=train_data.union(least_fav_df)
+    return new_user_id,final_set
     
 #test add_new_user_data(train_data=ALS_data,my_fav=['Emerald Chinese Restaurant'])
     
     
     
 
-def find_person_recommandation_als():
+def find_personal_recommendation_als(train_data,my_fav,my_least_fav=None,reg_param=0.3,rank=20,maxiter=10):
+    """
+    function to give personal recommendations to the defined user who has record of favourite restaurant and least favourite restaurant
+    
+    -----------
+    parameters:
+    
+    train_data: spark dataframe, Initial data for user_id,business_id,rating combinations
+    
+    my_fav: list of strings, favourite restaurant list; Assume these restaurants are marked as 5
+    
+    my_least_fav: list of strings, least favourite restaurant list; Assume these restaurants are makred as 1
+    
+    reg_param: lambda in ALS, defined the overfitting penalty of the ALS
+    
+    rank: rank of ALS, defined the complexity of ALS
+    
+    
+    """
+    best_regularization=reg_param
+    best_rank=rank
+    new_user_id,new_set=add_new_user_data(train_data,my_fav,my_least_fav)
     
     best_als=ALS(maxIter=maxiter, \
              regParam=best_regularization, \
@@ -148,7 +174,14 @@ def find_person_recommandation_als():
              coldStartStrategy="drop", \
              checkpointInterval=2
              )
+    model=best_als.fit(new_set)
+    users=new_set.select(best_als.getUserCol()).where(col('user_id_int')==new_user_id)
+    userSubsetRecs=model.recommendForUserSubset(users,10)
+    print("Here are the top 10 recommandations for you given your favourite and least favourite food")
+    for restaurant in userSubsetRecs.select("recommendations").collect()[0][0]:
+        restaurant_id=restaurant.__getattr__("business_id_int")
+        restaurant_name=train_data.where(col('business_id_int')==restaurant_id).select('name').distinct().collect()
+        print(restaurant_name[0].__getattr__("name"))
+    return userSubsetRecs
 
-    users=ALS_data.select(best_als.getUserCol()).distinct().limit(3)
-    userSubsetRecs=best_model.recommendForUserSubset(users,10)
     
